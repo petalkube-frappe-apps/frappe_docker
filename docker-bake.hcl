@@ -25,7 +25,7 @@ variable "FRAPPE_REPO" {
 }
 
 variable "ERPNEXT_REPO" {
-    default = "https://github.com/frappe/erpnext"
+    default = "https://github.com/petalkube-frappe-apps/erpnext"
 }
 
 variable "BENCH_REPO" {
