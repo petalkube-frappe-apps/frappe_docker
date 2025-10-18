@@ -44,6 +44,9 @@ docker buildx build --platform linux/arm64 --build-arg FRAPPE_PATH=https://githu
 # Verify the image is ARM64
 docker buildx imagetools inspect harrismajeed/erpnext-custom:develop | grep -i platform
 
+# build for normal debian
+docker build --build-arg=FRAPPE_PATH=https://github.com/petalkube-frappe-apps/frappe --build-arg=FRAPPE_BRANCH=develop --build-arg=PYTHON_VERSION=3.11.6 --build-arg=NODE_VERSION=20.19.2 --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 --build-arg=CRM_REPO=https://github.com/petalkube-frappe-apps/crm --build-arg=CRM_BRANCH=develop --tag=petalkube/erpnext-custom:develop-with-crm-debian --file=images/production/Containerfile_erp_crm .
+
 
 # Build for ARM64 for erpnext and crm 
 docker buildx build --platform linux/arm64 --build-arg FRAPPE_PATH=https://github.com/petalkube-frappe-apps/frappe --build-arg FRAPPE_BRANCH=develop --build-arg PYTHON_VERSION=3.11.6 --build-arg NODE_VERSION=20.19.2 --build-arg APPS_JSON_BASE64=$APPS_JSON_BASE64 --build-arg CRM_REPO=https://github.com/petalkube-frappe-apps/crm --build-arg CRM_BRANCH=develop --tag harrismajeed/erpnext-custom:develop-with-crm --file images/production/Containerfile_erp_crm --push --no-cache .
